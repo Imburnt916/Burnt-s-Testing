@@ -2,7 +2,7 @@
 
 public OnPluginStart(){
 
-    RegConsoleCmd("sm_menu", menu_command, "Menu");
+    RegConsoleCmd("sm_leaders", menu_command, "Leaders");
 
 }
 
@@ -13,14 +13,16 @@ public Action:menu_command(client, args)
 		return Plugin_Handled;
 	}
 	new Handle:panel = CreatePanel();
-	SetPanelTitle(panel, "Options:");
-	DrawPanelItem(panel, "1");
+	SetPanelTitle(panel, "Leaders of Jailbreak:");
+	DrawPanelItem(panel, "Bonbon");
+	DrawPanelItem(panel, "Icon");
+	DrawPanelItem(panel, "Burnt");
 	SendPanelToClient(panel, client, command_menu, 20);
  
 	CloseHandle(panel);
 	return Plugin_Handled;
 }
-public command_menu(Handle:menu, MenuAction:action, param1, param2)
+public command_menu(Handle:menu, MenuAction:action, param1, param2, param3)
 {
 	new client = param1;
 	if (action == MenuAction_Select)
@@ -28,10 +30,11 @@ public command_menu(Handle:menu, MenuAction:action, param1, param2)
 		switch(param2){
 			case 1:
 			{
-	        	PrintToChat(client, "Chose Option: %d", param2);
+	        	PrintToChat(client, " \x0B\x10Bonbon is the almighty jailbreak coder", param2);
 			}
 		}
 	} 
+	
 }
 
 
