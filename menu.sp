@@ -15,14 +15,23 @@ public Action:menu_command(client, args)
 	new Handle:panel = CreatePanel();
 	SetPanelTitle(panel, "Options:");
 	DrawPanelItem(panel, "1");
-	SendPanelToClient(panel, client, DoNothing, 20);
+	SendPanelToClient(panel, client, command_menu, 20);
  
 	CloseHandle(panel);
 	return Plugin_Handled;
 }
-public DoNothing(Handle:menu, MenuAction:action, param1, param2)
+public command_menu(Handle:menu, MenuAction:action, param1, param2)
 {
-    //Filler
+	new client = param1;
+	if (action == MenuAction_Select)
+	{
+		switch(param2){
+			case 1:
+			{
+	        	PrintToChat(client, "Chose Option: %d", param2);
+			}
+		}
+	} 
 }
 
 
